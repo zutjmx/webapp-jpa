@@ -7,7 +7,9 @@ import jakarta.enterprise.inject.Disposes;
 import jakarta.enterprise.inject.Produces;
 import jakarta.enterprise.inject.spi.InjectionPoint;
 import jakarta.inject.Inject;
+import jakarta.persistence.EntityManager;
 import org.apache.taglibs.standard.lang.jstl.test.beans.PublicBean1;
+import org.zutjmx.apiservlet.webapp.headers.util.JpaUtil;
 
 import javax.naming.NamingException;
 import javax.sql.DataSource;
@@ -43,6 +45,19 @@ public class ProducerResources {
                 .getMember()
                 .getDeclaringClass()
                 .getName());
+    }
+
+    @Produces
+    @RequestScoped
+    private EntityManager beanEntityManager() {
+        return JpaUtil.getEntityManager();
+    }
+
+    public void close(@Disposes EntityManager entityManager) {
+        if (entityManager.isOpen()) {
+            entityManager.close();
+            logger.info(":: Cerrando la conexión del EntityManager ::");
+        }
     }
 
     public void close(@Disposes @MariaDBConn Connection connection) throws SQLException {

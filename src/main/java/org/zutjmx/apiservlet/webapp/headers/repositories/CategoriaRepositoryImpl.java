@@ -3,7 +3,7 @@ package org.zutjmx.apiservlet.webapp.headers.repositories;
 import jakarta.inject.Inject;
 import org.zutjmx.apiservlet.webapp.headers.configs.MariaDBConn;
 import org.zutjmx.apiservlet.webapp.headers.configs.Repository;
-import org.zutjmx.apiservlet.webapp.headers.models.Categoria;
+import org.zutjmx.apiservlet.webapp.headers.models.entities.Categoria;
 
 import java.sql.*;
 import java.util.ArrayList;

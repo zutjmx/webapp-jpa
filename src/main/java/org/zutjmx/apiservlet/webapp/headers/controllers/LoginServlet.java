@@ -7,13 +7,11 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import org.zutjmx.apiservlet.webapp.headers.models.Usuario;
+import org.zutjmx.apiservlet.webapp.headers.models.entities.Usuario;
 import org.zutjmx.apiservlet.webapp.headers.services.LoginService;
-import org.zutjmx.apiservlet.webapp.headers.services.LoginServiceSessionImpl;
 import org.zutjmx.apiservlet.webapp.headers.services.UsuarioService;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.Optional;
 
 @WebServlet({"/login","/login.html"})

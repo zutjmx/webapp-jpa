@@ -1,9 +1,7 @@
 package org.zutjmx.apiservlet.webapp.headers.repositories;
 
-import org.zutjmx.apiservlet.webapp.headers.models.Usuario;
-
-import java.sql.SQLException;
+import org.zutjmx.apiservlet.webapp.headers.models.entities.Usuario;
 
 public interface UsuarioRepository extends CrudRepository<Usuario> {
-    Usuario porUsername(String username) throws SQLException;
+    Usuario porUsername(String username) throws Exception;
 }

@@ -1,5 +1,7 @@
 package org.zutjmx.apiservlet.webapp.headers.models;
 
+import org.zutjmx.apiservlet.webapp.headers.models.entities.Producto;
+
 import java.util.Objects;
 
 public class ItemCarro {

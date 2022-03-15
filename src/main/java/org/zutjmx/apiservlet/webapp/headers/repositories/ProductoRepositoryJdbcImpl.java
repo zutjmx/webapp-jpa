@@ -5,9 +5,8 @@ import jakarta.annotation.PreDestroy;
 import jakarta.inject.Inject;
 import org.zutjmx.apiservlet.webapp.headers.configs.MariaDBConn;
 import org.zutjmx.apiservlet.webapp.headers.configs.Repository;
-import org.zutjmx.apiservlet.webapp.headers.interceptors.Logging;
-import org.zutjmx.apiservlet.webapp.headers.models.Categoria;
-import org.zutjmx.apiservlet.webapp.headers.models.Producto;
+import org.zutjmx.apiservlet.webapp.headers.models.entities.Categoria;
+import org.zutjmx.apiservlet.webapp.headers.models.entities.Producto;
 
 import java.sql.*;
 import java.util.ArrayList;

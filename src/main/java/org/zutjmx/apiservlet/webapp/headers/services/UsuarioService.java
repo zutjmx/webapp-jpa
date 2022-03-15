@@ -1,6 +1,6 @@
 package org.zutjmx.apiservlet.webapp.headers.services;
 
-import org.zutjmx.apiservlet.webapp.headers.models.Usuario;
+import org.zutjmx.apiservlet.webapp.headers.models.entities.Usuario;
 
 import java.util.Optional;
 

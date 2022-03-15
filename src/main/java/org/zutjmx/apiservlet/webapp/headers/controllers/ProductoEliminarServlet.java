@@ -1,14 +1,13 @@
 package org.zutjmx.apiservlet.webapp.headers.controllers;
 
 import jakarta.inject.Inject;
-import jakarta.inject.Named;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.zutjmx.apiservlet.webapp.headers.configs.ProductoServicePrincipal;
-import org.zutjmx.apiservlet.webapp.headers.models.Producto;
+import org.zutjmx.apiservlet.webapp.headers.models.entities.Producto;
 import org.zutjmx.apiservlet.webapp.headers.services.ProductoService;
 
 import java.io.IOException;

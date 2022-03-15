@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
+@RepositoryJdbc
 @Repository
 public class ProductoRepositoryJdbcImpl implements CrudRepository<Producto> {
 

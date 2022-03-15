@@ -1,50 +1,81 @@
 package org.zutjmx.apiservlet.webapp.headers.services;
 
+import jakarta.inject.Inject;
+import org.zutjmx.apiservlet.webapp.headers.configs.ProductoServicePrincipal;
+import org.zutjmx.apiservlet.webapp.headers.configs.Service;
+import org.zutjmx.apiservlet.webapp.headers.interceptors.TransactionalJpa;
 import org.zutjmx.apiservlet.webapp.headers.models.entities.Categoria;
 import org.zutjmx.apiservlet.webapp.headers.models.entities.Producto;
+import org.zutjmx.apiservlet.webapp.headers.repositories.CrudRepository;
+import org.zutjmx.apiservlet.webapp.headers.repositories.RepositoryJpa;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-//@Alternative
-public class ProductoServiceImpl implements ProductoService {
+@Service
+@ProductoServicePrincipal
+@TransactionalJpa
+public class ProductoServiceImpl implements ProductoService{
+
+    @Inject
+    @RepositoryJpa
+    private CrudRepository<Producto> productoRepositoryJdbc;
+
+    @Inject
+    @RepositoryJpa
+    private CrudRepository<Categoria> categoriaRepository;
 
     @Override
     public List<Producto> listar() {
-        return Arrays.asList(new Producto(1L,"Laptop Asus VivoBook","Computación",20000),
-                             new Producto(2L,"Laptop Dell Vostro 1720","Computación",12000),
-                             new Producto(3L,"Laptop Dell Vostro 3500","Computación",15000),
-                             new Producto(4L,"Laptop XPS M1210","Computación",15000),
-                             new Producto(5L,"Huawei Y9","Telefonía",5000));
+        try {
+            return productoRepositoryJdbc.listar();
+        } catch (Exception e) {
+            throw new ServiceJdbcException(e.getMessage(),e.getCause());
+        }
     }
 
     @Override
     public Optional<Producto> porId(Long id) {
-        return listar()
-                .stream()
-                .filter(producto -> producto.getId().equals(id))
-                .findAny();
+        try {
+            return Optional.ofNullable(productoRepositoryJdbc.porid(id));
+        } catch (Exception e) {
+            throw new ServiceJdbcException(e.getMessage(),e.getCause());
+        }
     }
 
     @Override
     public void guardar(Producto producto) {
-
+        try {
+            productoRepositoryJdbc.guardar(producto);
+        } catch (Exception e) {
+            throw new ServiceJdbcException(e.getMessage(),e.getCause());
+        }
     }
 
     @Override
     public void eliminar(Long id) {
-
+        try {
+            productoRepositoryJdbc.eliminar(id);
+        } catch (Exception e) {
+            throw new ServiceJdbcException(e.getMessage(),e.getCause());
+        }
     }
 
     @Override
     public List<Categoria> listarCategorias() {
-        return null;
+        try {
+            return categoriaRepository.listar();
+        } catch (Exception e) {
+            throw new ServiceJdbcException(e.getMessage(),e.getCause());
+        }
     }
 
     @Override
     public Optional<Categoria> porIdCategoria(Long id) {
-        return Optional.empty();
+        try {
+            return Optional.ofNullable(categoriaRepository.porid(id));
+        } catch (Exception e) {
+            throw new ServiceJdbcException(e.getMessage(),e.getCause());
+        }
     }
-
 }

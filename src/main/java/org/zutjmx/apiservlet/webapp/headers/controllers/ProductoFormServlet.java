@@ -29,9 +29,6 @@ public class ProductoFormServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        /*Connection connection = (Connection) req.getAttribute("connection");
-        ProductoService productoService = new ProductoServiceJdbcImpl(connection);*/
-
         long id;
         try {
             id = Long.parseLong(req.getParameter("id"));
@@ -84,11 +81,11 @@ public class ProductoFormServlet extends HttpServlet {
             fecha = null;
         }
 
-        long id;
+        Long id;
         try {
-            id = Long.parseLong(req.getParameter("id"));
+            id = Long.valueOf(req.getParameter("id"));
         } catch (NumberFormatException e) {
-            id = 0L;
+            id = null;
         }
 
         Map<String, String> errores = new HashMap<>();

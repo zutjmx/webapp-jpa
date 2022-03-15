@@ -7,6 +7,7 @@ import org.zutjmx.apiservlet.webapp.headers.models.entities.Producto;
 
 import java.util.List;
 
+@RepositoryJpa
 @Repository
 public class ProductoRepositoryJpaImpl implements CrudRepository<Producto> {
 
@@ -15,8 +16,10 @@ public class ProductoRepositoryJpaImpl implements CrudRepository<Producto> {
 
     @Override
     public List<Producto> listar() throws Exception {
+        String consultaProductos = "select p from Producto p " +
+                "left outer join fetch p.categoria";
         return entityManager
-                .createQuery("from Producto",Producto.class)
+                .createQuery(consultaProductos,Producto.class)
                 .getResultList();
     }
 

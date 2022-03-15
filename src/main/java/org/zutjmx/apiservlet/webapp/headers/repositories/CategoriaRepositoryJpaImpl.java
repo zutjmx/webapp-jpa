@@ -7,6 +7,7 @@ import org.zutjmx.apiservlet.webapp.headers.models.entities.Categoria;
 
 import java.util.List;
 
+@RepositoryJpa
 @Repository
 public class CategoriaRepositoryJpaImpl implements CrudRepository<Categoria> {
 
